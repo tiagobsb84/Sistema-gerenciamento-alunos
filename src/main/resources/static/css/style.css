@@ -1,0 +1,55 @@
+/*Geral*/
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+
+/* cabecalho */
+.cabecalho {
+	background-color: #6f42c1;
+}
+
+.titulo-cabecalho>h5 {
+	color: #fdfdfd;
+	font-weight: bold;
+}
+
+.link-navegacao {
+	color:#fdfdfd;
+	font-weight: bold;
+	text-decoration: none;
+	cursor: pointer;
+	margin: 0 10px;
+	
+	transition: 0.7s;
+}
+
+.link-navegacao:hover {
+	color:#81d7cd;
+}
+
+
+/* responsive */
+@media only screen and (max-width: 780px) {
+	.menu-navegacao {
+		width: 100%;
+		text-align: center;
+	}
+	
+	.link-navegacao {
+		display: block;
+		
+		padding: 10px;
+	}
+	
+	.link-navegacao:hover {
+		background-color:#0d6efd;
+		color: #fff;
+	}
+	
+	.titulo-cabecalho {
+		width: 100%;
+		text-align: center;
+	}
+}
