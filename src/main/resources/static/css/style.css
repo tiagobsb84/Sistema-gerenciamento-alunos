@@ -43,6 +43,7 @@
 	padding: 1% 1%;
 	margin: 0 auto; 
 	margin-top: 200px;
+	height: 100%;
 }
 
 .secao-titulo > h2 {
@@ -56,6 +57,34 @@
 	border: none;
 }
 
+/* footer */
+footer {
+	color: #ffffff; 
+	background-color: #4527A0; 
+    bottom: 0;
+    position: fixed;
+    text-align: center;
+    width: 100%;
+    padding: 10px;
+    font-weight: bold;
+}
+
+/* formulario */
+.secao-formulario {
+	background-image: linear-gradient(90deg, #4f2958, #947280);
+	min-height: 100vh;
+	
+}
+
+.secao-form {
+	background-color: #fdfdfd;
+}
+
+.conteudo-form {
+	text-align: center;
+	width: 70%;
+	margin: 0 auto;
+}
 
 /* responsive */
 @media only screen and (max-width: 994px) {

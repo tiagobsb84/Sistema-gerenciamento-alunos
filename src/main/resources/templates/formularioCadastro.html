@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+
+<html lang="pt-br">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title>Cadastro de Aluno</title>
+	<!--BootStrap-->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+	<!--CSS-->
+	<link rel="stylesheet" href="css/style.css" />
+	<!--Googlefonts-->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link
+		href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,700;1,400;1,700&display=swap"
+		rel="stylesheet">
+</head>
+
+<body>
+
+	<header class="cabecalho">
+		<div class="container">
+			<nav class="navbar d-flex justify-content-between">
+				<div class="titulo-cabecalho">
+					<h5>TSO Academy</h5>
+				</div>
+				<div class="menu-navegacao">
+					<a th:href="@{/}" class="link-navegacao">Home</a>
+					<a th:href="@{/formulario}" class="link-navegacao">Cadastra Aluno</a>
+					<a href="#" class="link-navegacao">Pesquisa Aluno</a>
+					<a href="#" class="link-navegacao">Sair</a>
+				</div>
+			</nav>
+		</div>
+	</header>
+
+	<section class="secao-formulario">
+		<div class="container">
+			<form class="secao-form">
+				<div class="conteudo-form">
+					<div class="row g-3 align-items-center ">
+						<div class="col-auto">
+							<label for="inputNome" class="col-form-label">Nome Completo:</label>
+						</div>
+						<div class="col-auto">
+							<input type="text" id="inputNome" class="form-control" aria-describedby="nomeHelpInline"
+								placeholder="Digite o nome completo">
+						</div>
+						<div class="col-auto">
+							<span id="nomeHelpInline" class="form-text">
+								Mínimo 2 à 30 caracteres.
+							</span>
+						</div>
+					</div>
+
+					<div class="row g-3 align-items-center mt-3 mb-3">
+						<div class="col-auto">
+							<label for="cursoSelect" class="form-label me-3">Selecione o Curso: </label>
+							<select id="cursoSelect" class="border border-3 border-success rounded p-1">
+								<option>Administração</option>
+								<option>Administração</option>
+								<option>Administração</option>
+								<option>Administração</option>
+								<option>Administração</option>
+							</select>
+						</div>
+					</div>
+
+					<div class="">
+						<div class="row g-3 ">
+							<div class="col-auto d-flex">
+								<div>
+									<label for="inputMatricula" class="col-form-label me-3">Matrícula:</label>
+								</div>
+								<div>
+									<input type="text" class="form-control" id="inputMatricula">
+								</div>
+							</div>
+							<div class="col-auto">
+								<button type="button" class="btn btn-dark mb-3 border-1">Gerar Matrícula</button>
+							</div>
+						</div>
+					</div>
+
+					<div class="row g-3 align-items-center mt-3 mb-3">
+						<div class="col-auto">
+							<label for="statusSelect" class="form-label me-3">Estado do Aluno: </label>
+							<select id="statusSelect" class="border border-1 border-dark rounded p-1">
+								<option>Ativo</option>
+								<option>Trancado</option>
+								<option>Inativo</option>
+							</select>
+						</div>
+					</div>
+
+					<div class="row g-3 align-items-center mt-3 mb-5">
+						<div class="col-auto">
+							<label for="turnoSelect" class="form-label me-3">Turno: </label>
+							<select id="turnoSelect" class="border border-1 border-dark rounded p-1">
+								<option>Matutino</option>
+								<option>Vespertino</option>
+								<option>Noturno</option>
+							</select>
+						</div>
+					</div>
+
+					<button type="submit" class="btn btn-primary mb-3">Cadastrar</button>
+				</div>
+			</form>
+		</div>
+	</section>
+</body>
+
+</html>
