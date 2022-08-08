@@ -1,6 +1,8 @@
 package com.gerenciamento.model;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -15,22 +17,35 @@ public class Aluno {
 	private Long id;
 	
 	private String nome;
-	private CursoEnum curso;
+	
+	@Enumerated(EnumType.STRING)
+	private CursoEnum tipoCurso;
+	
 	private String matricula;
-	private SituacaoEnum Situacao;
+	
+	@Enumerated(EnumType.STRING)
+	private SituacaoEnum situacao;
+	
+	@Enumerated(EnumType.STRING)
 	private TurnoEnum turno;
 	
+	public Long getId() {
+		return id;
+	}
+	public void setId(Long id) {
+		this.id = id;
+	}
 	public String getNome() {
 		return nome;
 	}
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	public CursoEnum getCurso() {
-		return curso;
+	public CursoEnum gettipoCurso() {
+		return tipoCurso;
 	}
-	public void setCurso(CursoEnum curso) {
-		this.curso = curso;
+	public void settipoCurso(CursoEnum tipoCurso) {
+		this.tipoCurso = tipoCurso;
 	}
 	public String getMatricula() {
 		return matricula;
@@ -39,10 +54,10 @@ public class Aluno {
 		this.matricula = matricula;
 	}
 	public SituacaoEnum getSituacao() {
-		return Situacao;
+		return situacao;
 	}
 	public void setSituacao(SituacaoEnum situacao) {
-		Situacao = situacao;
+		this.situacao = situacao;
 	}
 	public TurnoEnum getTurno() {
 		return turno;

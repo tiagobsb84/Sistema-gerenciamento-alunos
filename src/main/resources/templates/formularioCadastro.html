@@ -40,14 +40,16 @@
 
 	<section class="secao-formulario">
 		<div class="container">
-			<form class="secao-form" action="/cadastro-formulario" method="POST">
+			<form th:object="${aluno}" class="secao-form" action="/cadastro-formulario" method="POST">
 				<div class="conteudo-form">
+				
+					<!-- Nome -->
 					<div class="row g-3 align-items-center ">
 						<div class="col-auto">
 							<label for="inputNome" class="col-form-label">Nome Completo:</label>
 						</div>
 						<div class="col-auto">
-							<input type="text" id="inputNome" class="form-control" aria-describedby="nomeHelpInline"
+							<input th:field="*{nome}" type="text" id="inputNome" class="form-control" aria-describedby="nomeHelpInline"
 								placeholder="Digite o nome completo">
 						</div>
 						<div class="col-auto">
@@ -56,54 +58,55 @@
 							</span>
 						</div>
 					</div>
-
+	
+					<!-- Curso -->
 					<div class="row g-3 align-items-center mt-3 mb-3">
 						<div class="col-auto">
 							<label for="cursoSelect" class="form-label me-3">Selecione o Curso: </label>
-							<select id="cursoSelect" class="border border-3 border-success rounded p-1">
-								<option>Administração</option>
-								<option>Administração</option>
-								<option>Administração</option>
-								<option>Administração</option>
-								<option>Administração</option>
+							<select th:field="*{tipoCurso}" id="cursoSelect" class="border border-3 border-success rounded p-1">
+								<option th:each="curso : ${T(com.gerenciamento.model.CursoEnum).values()}"
+								th:value="${curso}" th:text="${curso}">
+								</option>
 							</select>
 						</div>
 					</div>
-
-					<div class="">
+			
+					<!-- Matricula -->
+					<div>
 						<div class="row g-3 ">
 							<div class="col-auto d-flex">
 								<div>
-									<label for="inputMatricula" class="col-form-label me-3">Matrícula:</label>
+									<label for="inputMatricula" class="col-form-label me-3" th:field="${matricula}">Matrícula:</label>
 								</div>
 								<div>
 									<input type="text" class="form-control" id="inputMatricula">
 								</div>
 							</div>
 							<div class="col-auto">
-								<button type="button" class="btn btn-dark mb-3 border-1">Gerar Matrícula</button>
+								<button type="button" onclick="gerarMatricula();" class="btn btn-dark mb-3 border-1">Gerar Matrícula</button>
 							</div>
 						</div>
 					</div>
 
+					<!-- Situacao -->
 					<div class="row g-3 align-items-center mt-3 mb-3">
 						<div class="col-auto">
 							<label for="statusSelect" class="form-label me-3">Estado do Aluno: </label>
-							<select id="statusSelect" class="border border-1 border-dark rounded p-1">
-								<option>Ativo</option>
-								<option>Trancado</option>
-								<option>Inativo</option>
+							<select th:field="*{situacao}" id="statusSelect" class="border border-1 border-dark rounded p-1">
+								<option th:each="status : ${T(com.gerenciamento.model.SituacaoEnum).values()}"
+								th:value="${status}" th:text="${status}">
+								</option>
 							</select>
 						</div>
 					</div>
-
+					
+					<!-- Turno -->
 					<div class="row g-3 align-items-center mt-3 mb-5">
 						<div class="col-auto">
 							<label for="turnoSelect" class="form-label me-3">Turno: </label>
-							<select id="turnoSelect" class="border border-1 border-dark rounded p-1">
-								<option>Matutino</option>
-								<option>Vespertino</option>
-								<option>Noturno</option>
+							<select th:field="*{turno}" id="turnoSelect" class="border border-1 border-dark rounded p-1">
+								<option th:each="tempo : ${T(com.gerenciamento.model.TurnoEnum).values()}"
+								th:value="${tempo}" th:text="${tempo}"></option>
 							</select>
 						</div>
 					</div>
@@ -113,6 +116,9 @@
 			</form>
 		</div>
 	</section>
+	
+	<!-- importando biblioteca javascript local -->
+	<script src="js/main.js"></script>
 </body>
 
 </html>
