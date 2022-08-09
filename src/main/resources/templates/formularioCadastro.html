@@ -76,10 +76,10 @@
 						<div class="row g-3 ">
 							<div class="col-auto d-flex">
 								<div>
-									<label for="inputMatricula" class="col-form-label me-3" th:field="${matricula}">Matrícula:</label>
+									<label for="inputMatricula" class="col-form-label me-3">Matrícula:</label>
 								</div>
 								<div>
-									<input type="text" class="form-control" id="inputMatricula">
+									<input  th:field="*{matricula}" type="text" class="form-control" id="inputMatricula">
 								</div>
 							</div>
 							<div class="col-auto">
