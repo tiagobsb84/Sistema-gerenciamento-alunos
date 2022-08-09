@@ -22,22 +22,10 @@
 
 <body>
 
-	<header class="cabecalho">
-		<div class="container">
-			<nav class="navbar d-flex justify-content-between">
-				<div class="titulo-cabecalho">
-					<h5>TSO Academy</h5>
-				</div>
-				<div class="menu-navegacao">
-					<a th:href="@{/}" class="link-navegacao">Home</a>
-					<a th:href="@{/formulario}" class="link-navegacao">Cadastra Aluno</a>
-					<a href="#" class="link-navegacao">Pesquisa Aluno</a>
-					<a href="#" class="link-navegacao">Sair</a>
-				</div>
-			</nav>
-		</div>
-	</header>
+	<!-- cabecalho -->
+	<div th:replace="Fragmentos/fragmentos :: cabecalho"></div>	
 
+	<!-- secao formulario -->
 	<section class="secao-formulario">
 		<div class="container">
 			<form th:object="${aluno}" class="secao-form" action="/cadastro-formulario" method="POST">
@@ -63,9 +51,9 @@
 					<div class="row g-3 align-items-center mt-3 mb-3">
 						<div class="col-auto">
 							<label for="cursoSelect" class="form-label me-3">Selecione o Curso: </label>
-							<select th:field="*{tipoCurso}" id="cursoSelect" class="border border-3 border-success rounded p-1">
-								<option th:each="curso : ${T(com.gerenciamento.model.CursoEnum).values()}"
-								th:value="${curso}" th:text="${curso}">
+							<select th:field="*{curso}" id="cursoSelect" class="border border-3 border-success rounded p-1">
+								<option th:each="cursos : ${T(com.gerenciamento.model.CursoEnum).values()}"
+								th:value="${cursos}" th:text="${cursos}">
 								</option>
 							</select>
 						</div>

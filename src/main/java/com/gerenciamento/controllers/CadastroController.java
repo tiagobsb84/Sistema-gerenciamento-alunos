@@ -15,6 +15,7 @@ public class CadastroController {
 	@Autowired
 	private AlunoRepository alunoRepository;
 
+	//Abre a página formulario e instancia o objeto para receber os dados
 	@GetMapping("/formulario")
 	public ModelAndView solicitaAluno(Aluno aluno) {
 		ModelAndView mv = new ModelAndView();
@@ -23,12 +24,22 @@ public class CadastroController {
 		return mv;
 	}
 	
+	//Salva cadastro no BD
 	@PostMapping("/cadastro-formulario")
 	public ModelAndView cadastraAluno(Aluno aluno) {
 		ModelAndView mv = new ModelAndView();
-		mv.setViewName("redirect:/");
+		mv.setViewName("redirect:/lista-alunos");
 		mv.addObject("aluno", new Aluno());
 		alunoRepository.save(aluno);
+		return mv;
+	}
+	
+	//Lista todos alunos
+	@GetMapping("lista-alunos")
+	public ModelAndView listaAlunos() {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("listaAlunos");
+		mv.addObject("listaAlunos", alunoRepository.findAll());
 		return mv;
 	}
 }

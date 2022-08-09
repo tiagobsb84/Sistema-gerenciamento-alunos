@@ -19,7 +19,7 @@ public class Aluno {
 	private String nome;
 	
 	@Enumerated(EnumType.STRING)
-	private CursoEnum tipoCurso;
+	private CursoEnum curso;
 	
 	private String matricula;
 	
@@ -41,11 +41,11 @@ public class Aluno {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	public CursoEnum gettipoCurso() {
-		return tipoCurso;
+	public CursoEnum getCurso() {
+		return curso;
 	}
-	public void settipoCurso(CursoEnum tipoCurso) {
-		this.tipoCurso = tipoCurso;
+	public void setCurso(CursoEnum curso) {
+		this.curso = curso;
 	}
 	public String getMatricula() {
 		return matricula;
