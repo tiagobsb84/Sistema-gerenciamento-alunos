@@ -23,35 +23,45 @@
 <body>
 
 	<!-- cabecalho -->
-	<div th:replace="Fragmentos/fragmentos :: cabecalho"></div>	
+	<div th:replace="Fragmentos/fragmentos :: cabecalho"></div>
 
-	<div class="container">
-		<table class="table table-dark table-hover">
-			<thead>
-				<tr>
-					<th>Alunos</th>
-					<th>Matrícula</th>
-					<th>Curso</th>
-					<th>Situacao</th>
-					<th>Turno</th>
-				</tr>
-			</thead>
+	<!-- Conteudo -->
+	<div class="conteudo">
+		<div class="container ">	
+			<table class="table table-dark table-hover">
+			<div class="titulo-tabela">
+				<h4 class="titulo-lista">Lista de Alunos</h4>
+			</div>
+				<thead>
+					<tr>
+						<th>Alunos</th>
+						<th>Matrícula</th>
+						<th>Curso</th>
+						<th>Situacao</th>
+						<th>Turno</th>
+						<th>Alterar</th>
+						<th>Deletar</th>
+					</tr>
+				</thead>
 
-			<tbody>
-				<tr th:each="alunos : ${listaAlunos}">
-					<td th:text="${alunos.nome}"></td>
-					<td th:text="${alunos.matricula}"></td>
-					<td th:text="${alunos.curso}"></td>
-					<td th:text="${alunos.situacao}"></td>
-					<td th:text="${alunos.turno}"></td>
-				</tr>
-			</tbody>
-		</table>
+				<tbody>
+					<tr th:each="alunos : ${listaAlunos}">
+						<td th:text="${alunos.nome}"></td>
+						<td th:text="${alunos.matricula}"></td>
+						<td th:text="${alunos.curso}"></td>
+						<td th:text="${alunos.situacao}"></td>
+						<td th:text="${alunos.turno}"></td>
+						<td><a th:href="@{editar/{id}(id=${alunos.id})}" type="button">editar</a></td>
+						<td><button type="button">excluir</button></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
 	</div>
-	
+
 	<!-- rodape -->
 	<div th:replace="Fragmentos/fragmentos :: rodape"></div>
-	
+
 </body>
 
 </html>

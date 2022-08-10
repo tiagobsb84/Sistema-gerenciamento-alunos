@@ -86,6 +86,21 @@ footer {
 	margin: 0 auto;
 }
 
+/* Lista de alunos */
+.conteudo {
+	background-color: lightgray;
+	height: 100vh;
+}
+
+.titulo-lista {
+	text-align: center;
+}
+
+.titulo-tabela {
+	border: 2px red;
+	padding: 10px;
+}
+
 /* responsive */
 @media only screen and (max-width: 994px) {
 	

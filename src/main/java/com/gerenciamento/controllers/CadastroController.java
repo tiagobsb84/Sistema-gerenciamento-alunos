@@ -1,8 +1,11 @@
 package com.gerenciamento.controllers;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -40,6 +43,25 @@ public class CadastroController {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("listaAlunos");
 		mv.addObject("listaAlunos", alunoRepository.findAll());
+		return mv;
+	}
+	
+	//Editar aluno
+	@GetMapping("/editar/{id}")
+	public ModelAndView editarAluno(@PathVariable("id") Long id) {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("editar");
+		Optional<Aluno> aluno = alunoRepository.findById(id);
+		mv.addObject("aluno", aluno);
+		return mv;
+	}
+	
+	//Salva aluno editado
+	@PostMapping("/editar")
+	public ModelAndView editarAluno(Aluno aluno) {
+		ModelAndView mv = new ModelAndView();
+		alunoRepository.save(aluno);
+		mv.setViewName("redirect:/lista-alunos");
 		return mv;
 	}
 }
