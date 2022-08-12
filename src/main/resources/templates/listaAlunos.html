@@ -51,8 +51,8 @@
 						<td th:text="${alunos.curso}"></td>
 						<td th:text="${alunos.situacao}"></td>
 						<td th:text="${alunos.turno}"></td>
-						<td><a th:href="@{editar/{id}(id=${alunos.id})}" type="button">editar</a></td>
-						<td><button type="button">excluir</button></td>
+						<td><a class="btn btn-outline-primary" th:href="@{editar/{id}(id=${alunos.id})}" type="button">editar</a></td>
+						<td><a class="btn btn-outline-danger" th:href="@{deletar/{id}(id=${alunos.id})}" type="button">excluir</a></td>
 					</tr>
 				</tbody>
 			</table>
