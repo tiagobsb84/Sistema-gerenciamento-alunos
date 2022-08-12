@@ -2,9 +2,11 @@ package com.gerenciamento.controllers;
 
 import java.util.Optional;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -30,11 +32,18 @@ public class CadastroController {
 	
 	//Salva cadastro no BD
 	@PostMapping("/cadastro-formulario")
-	public ModelAndView cadastraAluno(Aluno aluno) {
+	public ModelAndView cadastraAluno(@Valid Aluno aluno, BindingResult result) {
 		ModelAndView mv = new ModelAndView();
-		mv.setViewName("redirect:/lista-alunos");
-		mv.addObject("aluno", new Aluno());
-		alunoRepository.save(aluno);
+		
+		if(result.hasErrors()) {
+			mv.setViewName("formularioCadastro.html");
+			mv.addObject("aluno");
+		
+		} else {
+			mv.setViewName("redirect:/lista-alunos");
+			alunoRepository.save(aluno);
+			
+		}
 		return mv;
 	}
 	

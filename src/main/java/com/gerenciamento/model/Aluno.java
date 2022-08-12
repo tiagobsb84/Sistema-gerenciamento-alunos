@@ -7,6 +7,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "aluno")
@@ -16,11 +18,14 @@ public class Aluno {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	
+	@Size(min=2 , max = 30,  message = "O nome deve contém no mínimo 2 caracteres, maximo 30 caracteres")
+	@NotBlank(message = "O campo nome obrigatório!")
 	private String nome;
 	
 	@Enumerated(EnumType.STRING)
 	private CursoEnum curso;
 	
+	@NotBlank(message = "O campo Matrícula obrigatória!")
 	private String matricula;
 	
 	@Enumerated(EnumType.STRING)
