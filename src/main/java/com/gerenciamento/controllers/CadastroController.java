@@ -10,6 +10,8 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestAttribute;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.gerenciamento.model.Aluno;
@@ -61,17 +63,25 @@ public class CadastroController {
 	public ModelAndView editarAluno(@PathVariable("id") Long id) {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("editar");
-		Optional<Aluno> aluno = alunoRepository.findById(id);
+		Optional<Aluno> aluno = alunoRepository.findById(id);			
 		mv.addObject("aluno", aluno);
 		return mv;
 	}
 	
 	//Salva aluno editado
 	@PostMapping("/editar")
-	public ModelAndView editarAluno(Aluno aluno) {
+	public ModelAndView editarAluno(@Valid Aluno aluno, BindingResult result) {
 		ModelAndView mv = new ModelAndView();
-		alunoRepository.save(aluno);
-		mv.setViewName("redirect:/lista-alunos");
+		
+		if(result.hasErrors()) {
+			mv.setViewName("editar");
+			mv.addObject("aluno");
+			
+		} else {
+			mv.setViewName("redirect:/lista-alunos");
+			alunoRepository.save(aluno);
+		}
+		
 		return mv;
 	}
 	
@@ -80,5 +90,14 @@ public class CadastroController {
 	 public String deletarAluno(@PathVariable("id") Long id) {
 		alunoRepository.deleteById(id);
 		return "redirect:/lista-alunos";
+	}
+	
+	//Pesquisar ALuno
+	@PostMapping("/pesquisarAluno")
+	public ModelAndView pesquisar(@RequestParam("nomepesquisa") String pesquisarAluno) {
+		ModelAndView mv = new ModelAndView("redirect:/lista-alunos");
+		mv.addObject("listaAlunos", alunoRepository.findalunoByNome(pesquisarAluno));
+		mv.addObject("listaAlunos", new Aluno());
+		return mv;
 	}
 }

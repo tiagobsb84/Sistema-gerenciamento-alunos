@@ -30,7 +30,16 @@
 		<div class="container ">	
 			<table class="table table-dark table-hover">
 			<div class="titulo-tabela">
-				<h4 class="titulo-lista">Lista de Alunos</h4>
+				<div>
+					<h4 class="titulo-lista">Lista de Alunos</h4>
+				</div>
+				<div>
+					<form action="pesquisarAluno" method="post">
+						<label>Pesquisa por Aluno:</label>
+						<input name="nomepesquisa">
+						<input class="btn" type="submit" value="buscar">
+					</form>
+				</div>
 			</div>
 				<thead>
 					<tr>

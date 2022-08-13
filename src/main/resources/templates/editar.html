@@ -38,8 +38,8 @@
 				
 					<!-- Nome -->
 					<div class="row g-3 align-items-center ">
-						<div class="col-auto">
-							<label for="inputNome" class="col-form-label">Nome Completo:</label>
+						<div class="col-auto alert alert-danger" role="alert" th:if="${#fields.hasErrors('nome')}">
+							<label for="inputNome" class="col-form-label validation-message" th:errors="*{nome}">Nome Completo:</label>
 						</div>
 						<div class="col-auto">
 							<input th:field="*{nome}" type="text" id="inputNome" class="form-control" aria-describedby="nomeHelpInline"
