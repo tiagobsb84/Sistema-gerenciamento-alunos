@@ -37,6 +37,31 @@
 		</div>
 	</div>
 	
+	<!-- inicio da modal -->
+	<!--<div class="modal fade" id="modalPesquisa">
+		<div class="modal-dialog modal-lg">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title">Encontre um Aluno</h5>
+					<button type="button" class="close" data-desmiss="modal">
+						<span>x</span>
+					</button>
+				</div>
+				
+				<form method="post" action="pesquisar-aluno" th:object="${aluno}">
+					<div class="modal-body">
+						<input type="text" th:field="*{nome}" class="form-control">
+					</div>
+					
+					<div class="modal-footer">
+						<button class="btn btn-danger" data-dismiss="modal">Fechar</button>
+						<button class="btn btn-success" type="submit">Pesquisar</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>-->
+	
 	<!-- rodape -->
 	<div th:replace="Fragmentos/fragmentos :: rodape"></div>	
 	

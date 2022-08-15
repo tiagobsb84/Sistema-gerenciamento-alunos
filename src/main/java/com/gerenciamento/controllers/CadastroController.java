@@ -1,5 +1,6 @@
 package com.gerenciamento.controllers;
 
+import java.util.List;
 import java.util.Optional;
 
 import javax.validation.Valid;
@@ -10,7 +11,6 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestAttribute;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -92,12 +92,44 @@ public class CadastroController {
 		return "redirect:/lista-alunos";
 	}
 	
-	//Pesquisar ALuno
-	@PostMapping("/pesquisarAluno")
-	public ModelAndView pesquisar(@RequestParam("nomepesquisa") String pesquisarAluno) {
-		ModelAndView mv = new ModelAndView("redirect:/lista-alunos");
-		mv.addObject("listaAlunos", alunoRepository.findalunoByNome(pesquisarAluno));
-		mv.addObject("listaAlunos", new Aluno());
+	@GetMapping("filtro-alunos")
+	public ModelAndView filtrar() {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("filtroAluno");
+		mv.addObject("listaDeAlunos", new Aluno());
 		return mv;
 	}
+	
+	//Pesquisar ALuno
+	@PostMapping("pesquisar-aluno")
+	public ModelAndView pesquisar(@RequestParam("nomePesquisa") String alunos) {
+		ModelAndView mv = new ModelAndView();
+		List<Aluno> listaAlunos;
+		if(alunos == null || alunos.trim().isEmpty()) {
+			listaAlunos = alunoRepository.findAll();
+		
+		} else {
+			listaAlunos = alunoRepository.findByNome(alunos);
+		}
+		
+		mv.addObject("listaDeAlunos", listaAlunos);
+		mv.setViewName("filtroAluno");
+		return mv;
+	}
+	
+//	@PostMapping("pesquisar-aluno")
+//	public ModelAndView pesquisarAluno(@RequestParam(required = false) String nome) {
+//		ModelAndView mv = new ModelAndView();
+//		List<Aluno> listaAlunos;
+//		if(nome == null || nome.trim().isEmpty()) {
+//			listaAlunos = alunoRepository.findAll();
+//		
+//		} else {
+//			listaAlunos = alunoRepository.findByNomeContainingIgnoreCase(nome);
+//		}
+//		
+//		mv.addObject("listaDeAlunos", listaAlunos);
+//		mv.setViewName("filtroAluno");
+//		return mv;
+//	}
 }
