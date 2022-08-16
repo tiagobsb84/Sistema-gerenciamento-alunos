@@ -8,9 +8,15 @@ import org.springframework.data.jpa.repository.Query;
 import com.gerenciamento.model.Aluno;
 
 public interface AlunoRepository extends JpaRepository<Aluno, Long> {
-
-	@Query("select p from Aluno p where p.nome like %?1%")
-	List<Aluno> findByNome(String nome);
 	
 	List<Aluno> findByNomeContainingIgnoreCase(String nome);
+	
+	@Query("select j from Aluno j where j.situacao = 'ATIVO' ")
+	List<Aluno> findBySituacaoAtivo();
+	
+	@Query("select j from Aluno j where j.situacao = 'TRANCADO' ")
+	List<Aluno> findBySituacaoTrancado();
+	
+	@Query("select j from Aluno j where j.situacao = 'INATIVO' ")
+	List<Aluno> findBySituacaoInativo();
 }

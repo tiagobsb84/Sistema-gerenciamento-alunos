@@ -130,6 +130,7 @@ public class CadastroController {
 	public ModelAndView alunosAtivos() {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("status/alunos-ativos");
+		mv.addObject("listaDeAlunos", alunoRepository.findBySituacaoAtivo());
 		return mv;
 	}
 	
@@ -138,6 +139,7 @@ public class CadastroController {
 	public ModelAndView alunosTrancados() {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("status/alunos-trancados");
+		mv.addObject("listaDeAlunos", alunoRepository.findBySituacaoTrancado());
 		return mv;
 	}
 		
@@ -146,6 +148,7 @@ public class CadastroController {
 	public ModelAndView alunosInativos() {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("status/alunos-inativos");
+		mv.addObject("listaDeAlunos", alunoRepository.findBySituacaoInativo());
 		return mv;
 	}
 }
