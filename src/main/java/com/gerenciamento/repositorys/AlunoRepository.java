@@ -12,5 +12,5 @@ public interface AlunoRepository extends JpaRepository<Aluno, Long> {
 	@Query("select p from Aluno p where p.nome like %?1%")
 	List<Aluno> findByNome(String nome);
 	
-	//List<Aluno> findByNomeContainingIgnoreCase(String nome);
+	List<Aluno> findByNomeContainingIgnoreCase(String nome);
 }

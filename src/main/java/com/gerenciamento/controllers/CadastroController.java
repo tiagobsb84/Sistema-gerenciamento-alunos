@@ -109,7 +109,7 @@ public class CadastroController {
 			listaAlunos = alunoRepository.findAll();
 		
 		} else {
-			listaAlunos = alunoRepository.findByNome(alunos);
+			listaAlunos = alunoRepository.findByNomeContainingIgnoreCase(alunos);
 		}
 		
 		mv.addObject("listaDeAlunos", listaAlunos);
@@ -117,19 +117,35 @@ public class CadastroController {
 		return mv;
 	}
 	
-//	@PostMapping("pesquisar-aluno")
-//	public ModelAndView pesquisarAluno(@RequestParam(required = false) String nome) {
-//		ModelAndView mv = new ModelAndView();
-//		List<Aluno> listaAlunos;
-//		if(nome == null || nome.trim().isEmpty()) {
-//			listaAlunos = alunoRepository.findAll();
-//		
-//		} else {
-//			listaAlunos = alunoRepository.findByNomeContainingIgnoreCase(nome);
-//		}
-//		
-//		mv.addObject("listaDeAlunos", listaAlunos);
-//		mv.setViewName("filtroAluno");
-//		return mv;
-//	}
+	//Pesquisar Status Alunos
+	@GetMapping("status")
+	public ModelAndView stausPesquisa() {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("pesquisaStatus");
+		return mv;
+	}
+	
+	//Pesquisar ALunos Ativos
+	@GetMapping("alunos-ativos")
+	public ModelAndView alunosAtivos() {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("status/alunos-ativos");
+		return mv;
+	}
+	
+	//Pesquisar ALunos Trancados
+	@GetMapping("alunos-trancados")
+	public ModelAndView alunosTrancados() {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("status/alunos-trancados");
+		return mv;
+	}
+		
+	//Pesquisar ALunos Inativos
+	@GetMapping("alunos-inativos")
+	public ModelAndView alunosInativos() {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("status/alunos-inativos");
+		return mv;
+	}
 }
