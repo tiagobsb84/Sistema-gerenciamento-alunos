@@ -1,128 +1,110 @@
-/*Geral*/
 * {
-	padding: 0;
 	margin: 0;
+	padding: 0;
 	box-sizing: border-box;
 }
 
 /* cabecalho */
-.cabecalho {
-	background-color: #370299;
+.menu-navegacao {
+	background-color: #161616;
+	display: flex;
 	padding: 10px;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+	
 }
 
-.titulo-cabecalho>h5 {
-	color: #fdfdfd;
-	font-weight: bold;
-	font-family: 'Montserrat', sans-serif;
+.navegacao-titulo {
+	color: #fff;
+}
+
+.lista-navegacao {
+	display: flex;
+	
+}
+
+.item-navegacao {
+	list-style: none;
+	
 }
 
 .link-navegacao {
-	color:#fdfdfd;
-	font-family: 'Montserrat', sans-serif;
-	font-weight: bold;
+	color: #fff;
 	text-decoration: none;
-	cursor: pointer;
-	margin: 0 10px;
-	
-	transition: 0.7s;
+	margin-left: 20px;
+	font-weight: bold;
+	font-size: 16px;
 }
 
 .link-navegacao:hover {
-	color:#81d7cd;
-}
-
-/* Secao */
-.secao {
-	background-image: linear-gradient(90deg, #4f2958, #947280);
-	height: 100vh;
-}
-
-.secao-titulo {
-	text-align: center;
-	max-width: 1280px;
-	padding: 1% 1%;
-	margin: 0 auto; 
-	height: 100%;
-}
-
-.secao-titulo > h2 {
-	color: #fff;
-	font-weight: bold;
-	font-size: 2rem;
-	font-family: 'Montserrat', sans-serif;
-}
-
-.botoes-secao {
-	border: none;
-}
-
-/* footer */
-footer {
-	color: #ffffff; 
-	background-color: #4527A0; 
-    bottom: 0;
-    position: fixed;
-    text-align: center;
-    width: 100%;
-    padding: 10px;
-    font-weight: bold;
-}
-
-/* formulario */
-.secao-formulario {
-	background-image: linear-gradient(90deg, #4f2958, #947280);
-	min-height: 100vh;
+	color: rgba(255,255,255, 0.5);
 	
 }
 
-.secao-form {
-	background-color: #fdfdfd;
+/*secao*/
+.secao {
+	height: 84vh;
+	background-image: linear-gradient( #161616, lightgray , lightgrey);
 }
 
-.conteudo-form {
-	text-align: center;
-	width: 70%;
-	margin: 0 auto;
+.conteudo-secao {
+	margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+    
+    letter-spacing: 20px;
 }
 
-/* Lista de alunos */
-.conteudo {
-	background-color: lightgray;
-	height: 100vh;
+.titulo-secao {
+	font-size: 48px;
 }
 
-.titulo-lista {
-	text-align: center;
+
+.footer {
+	background-color: #161616;
+	text-align: center;	
 }
 
-.titulo-tabela {
-	border: 2px red;
-	padding: 10px;
+/*footer*/
+.footer > span {
+	color:#fff;
+	font-weight: bold;
 }
 
 /* responsive */
-@media only screen and (max-width: 994px) {
+@media only screen and (max-width: 866px) {
 	
-	/* cabecalho-responsive */
-	.menu-navegacao {
+	.menu-navegacao{
+		display: block;
+		width: 100%;
+	}
+	
+	.navegacao-titulo {
+		text-align: center;
+	}
+	
+}
+
+@media only screen and (max-width: 644px) {
+	.lista-navegacao {
+		display:block;
 		width: 100%;
 		text-align: center;
 	}
 	
-	.link-navegacao {
-		display: block;
-		
+	.item-navegacao {
 		padding: 10px;
 	}
 	
-	.link-navegacao:hover {
-		background-color:#0d6efd;
-		color: #fff;
+	.titulo-secao {
+		text-align: center;
 	}
 	
-	.titulo-cabecalho {
-		width: 100%;
-		text-align: center;
+	.conteudo-secao {
+		position: relative;
 	}
 }
