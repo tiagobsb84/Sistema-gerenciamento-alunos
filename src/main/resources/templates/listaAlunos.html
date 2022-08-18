@@ -11,7 +11,7 @@
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
 		integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
 	<!--CSS-->
-	<link rel="stylesheet" href="css/style.css" />
+	<link rel="stylesheet" href="css/listaAlunos.css" />
 	<!--Googlefonts-->
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -30,14 +30,20 @@
 		<div class="container ">	
 			<table class="table table-dark table-hover">
 			<div class="titulo-tabela">
-				<div>
-					<h4 class="titulo-lista">Lista de Alunos</h4>
+				<div class="campo-titulo">
+					<h4 class="titulo-lista">Lista com todos os Alunos</h4>
 				</div>
-				<div>
-					<form th:object="${listaDeAlunos}" action="pesquisar-aluno" method="post">
-						<label>Pesquisa por Aluno:</label>
-						<input type="text" name="nomePesquisa">
-						<input class="btn" type="submit">
+				<div class="form-pesquisar">
+					<form  th:object="${listaDeAlunos}" action="pesquisar-aluno" method="post">
+						<div>
+							<label class="label-pesquisar">Pesquisa por Aluno:</label>
+						</div>
+						<div>
+							<input class="input-pesquisar" type="text" name="nomePesquisa">
+						</div>
+						<div>
+							<input class="btn botao-pesquisar" type="submit">
+						</div>
 					</form>
 				</div>
 			</div>
