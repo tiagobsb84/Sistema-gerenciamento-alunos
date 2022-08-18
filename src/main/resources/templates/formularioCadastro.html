@@ -8,10 +8,10 @@
 
 	<title>Cadastro de Aluno</title>
 	<!--BootStrap-->
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
 		integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
 	<!--CSS-->
-	<link rel="stylesheet" href="css/style.css" />
+	<link rel="stylesheet" href="css/formularioCadastro.css" />
 	<!--Googlefonts-->
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -26,84 +26,70 @@
 	<div th:replace="Fragmentos/fragmentos :: cabecalho"></div>	
 
 	<!-- secao formulario -->
-	<section class="secao-formulario">
-		<div class="container">
-			<form th:object="${aluno}" class="secao-form" action="/cadastro-formulario" method="POST">
-				<div class="conteudo-form">
+	<div class="secao-formulario">
+		<div class="formulario">
+			<form th:object="${aluno}" action="/cadastro-formulario" method="POST" class="formulario-cadastro">
+				<div>
+					<h3 class="titulo-formulario">Formulário de Cadastro do Aluno</h3>
+					<hr>
+				</div>
+				<!-- nome -->
+				<div class="form-nome">
+					<label for="inputNome">Digite o Nome:</label>
+					<input th:field="*{nome}" type="text" class="input-nome" id="inputNome" placeholder="Digite o nome completo">
+					<div class="col-auto alert alert-danger" role="alert" th:if="${#fields.hasErrors('nome')}">
+						<span class="erro-nome" for="inputNome" th:errors="*{nome}"></span>
+					</div>
+				</div>
 				
-					<!-- Nome -->
-					<div class="row g-3 align-items-center ">
-						<div class="col-auto alert alert-danger" role="alert" th:if="${#fields.hasErrors('nome')}">
-							<label for="inputNome" class="col-form-label validation-message" th:errors="*{nome}">Nome Completo:</label>
-						</div>
-						<div class="col-auto">
-							<input th:field="*{nome}" type="text" id="inputNome" class="form-control" aria-describedby="nomeHelpInline"
-								placeholder="Digite o nome completo">
-						</div>
-						<div class="col-auto">
-							<span id="nomeHelpInline" class="form-text">
-								Mínimo 2 à 30 caracteres.
-							</span>
-						</div>
+				<!-- curso -->
+				<div class="form-curso">
+					<label for="cursoSelect">Selecione o Curso:</label>
+					<select th:field="*{curso}" id="cursoSelect" class="input-curso curso-input">
+						<option th:each="cursos : ${T(com.gerenciamento.model.CursoEnum).values()}"
+							th:value="${cursos}" th:text="${cursos}">
+						</option>
+					</select>
+				</div>
+				
+				<!-- Matricula -->
+				<div class="form-matricula">
+					<div class="matricula-form">
+						<label for="inputMatricula" class="label-matricula">Matrícula:</label>
+						<input th:field="*{matricula}" type="text" id="inputMatricula" class="input-matricula">					
+						<button type="button" onclick="gerarMatricula();" class="botao-gerar-matricula">Gerar Matrícula</button>
 					</div>
-	
-					<!-- Curso -->
-					<div class="row g-3 align-items-center mt-3 mb-3">
-						<div class="col-auto">
-							<label for="cursoSelect" class="form-label me-3">Selecione o Curso: </label>
-							<select th:field="*{curso}" id="cursoSelect" class="border border-3 border-success rounded p-1">
-								<option th:each="cursos : ${T(com.gerenciamento.model.CursoEnum).values()}"
-								th:value="${cursos}" th:text="${cursos}">
-								</option>
-							</select>
-						</div>
+					<div class="col-auto alert alert-danger erro-matricula" role="alert" th:if="${#fields.hasErrors('matricula')}">
+						<span class="erro-nome" for="inputMatricula" th:errors="*{matricula}"></span>
 					</div>
-			
-					<!-- Matricula -->
-					<div>
-						<div class="row g-3 ">
-							<div class="col-auto d-flex">
-								<div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('matricula')}">
-									<label for="inputMatricula" class="col-form-label me-3 validation-message" th:errors="*{matricula}">Matrícula:</label>
-								</div>
-								<div>
-									<input  th:field="*{matricula}" type="text" class="form-control" id="inputMatricula">
-								</div>
-							</div>
-							<div class="col-auto">
-								<button type="button" onclick="gerarMatricula();" class="btn btn-dark mb-3 border-1">Gerar Matrícula</button>
-							</div>
-						</div>
-					</div>
-
-					<!-- Situacao -->
-					<div class="row g-3 align-items-center mt-3 mb-3">
-						<div class="col-auto">
-							<label for="statusSelect" class="form-label me-3">Estado do Aluno: </label>
-							<select th:field="*{situacao}" id="statusSelect" class="border border-1 border-dark rounded p-1">
+				</div>
+				
+				
+				<!-- Situacao -->
+						<div class="form-situacao">
+							<label for="statusSelect" class="">Situação do Aluno: </label>
+							<select th:field="*{situacao}" id="statusSelect" class="situacao-input">
 								<option th:each="status : ${T(com.gerenciamento.model.SituacaoEnum).values()}"
 								th:value="${status}" th:text="${status}">
 								</option>
 							</select>
 						</div>
-					</div>
 					
 					<!-- Turno -->
-					<div class="row g-3 align-items-center mt-3 mb-5">
-						<div class="col-auto">
-							<label for="turnoSelect" class="form-label me-3">Turno: </label>
-							<select th:field="*{turno}" id="turnoSelect" class="border border-1 border-dark rounded p-1">
+						<div class="form-turno">
+							<label for="turnoSelect" class="">Turno: </label>
+							<select th:field="*{turno}" id="turnoSelect" class="turno-input">
 								<option th:each="tempo : ${T(com.gerenciamento.model.TurnoEnum).values()}"
 								th:value="${tempo}" th:text="${tempo}"></option>
 							</select>
 						</div>
-					</div>
-
-					<button type="submit" class="btn btn-primary mb-3">Cadastrar</button>
+						<div class="botao-submit-cadastra">
+							<button type="submit" class="botao-cadastra">Cadastrar</button>
+						</div>
 				</div>
 			</form>
-		</div>
-	</section>
+		<div>
+	</div>
 	
 	<!-- importando biblioteca javascript local -->
 	<script src="js/main.js"></script>

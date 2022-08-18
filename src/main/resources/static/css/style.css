@@ -64,12 +64,14 @@
 }
 
 
+
+
+/*footer*/
 .footer {
 	background-color: #161616;
 	text-align: center;	
 }
 
-/*footer*/
 .footer > span {
 	color:#fff;
 	font-weight: bold;
