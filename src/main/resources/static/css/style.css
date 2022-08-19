@@ -11,7 +11,7 @@
 	padding: 10px;
     flex-direction: row;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-around;
 	
 }
 
@@ -61,6 +61,14 @@
 
 .titulo-secao {
 	font-size: 48px;
+}
+
+.nav-sair {
+	color: red;
+}
+
+.nav-sair:hover {
+	color: lightpink;
 }
 
 

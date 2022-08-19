@@ -29,13 +29,18 @@
 					<p>Insira suas credenciais para efetuar login no sistema.</p>
 				</div>
 				
-				<form method="post">
+				<form method="post" th:object="${usuarioLogin}" action="/login">
+				
+					<div class="alert alert-danger" role="alert" th:if="${msg}">
+						<strong th:text="${msg}"></strong>
+					</div>
+				
 					<div class="form-group input-email">
-						<input type="text" class="form-control" placeholder="username">
+						<input th:field="*{userLogin}" type="text" class="form-control" placeholder="username">
 					</div>
 					
 					<div class="form-group">
-						<input type="password" class="form-control" placeholder="insira sua senha">
+						<input th:field="*{senha}" type="password" class="form-control" placeholder="insira sua senha">
 					</div>
 					
 					<div class="cadastro">
