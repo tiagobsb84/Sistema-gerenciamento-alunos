@@ -9,11 +9,12 @@ import com.gerenciamento.model.Aluno;
 @Controller
 public class HomeController {
 
-	@GetMapping("/")
+	@GetMapping("/index")
 	public ModelAndView index() {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("/index");
 		mv.addObject("aluno", new Aluno());
 		return mv;
 	}
+	
 }
