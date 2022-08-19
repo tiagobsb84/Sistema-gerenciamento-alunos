@@ -33,6 +33,7 @@
 					<h3 class="titulo-formulario">Formulário de Cadastro do Aluno</h3>
 					<hr>
 				</div>
+				
 				<!-- nome -->
 				<div class="form-nome">
 					<label for="inputNome">Digite o Nome:</label>
@@ -66,26 +67,26 @@
 				
 				
 				<!-- Situacao -->
-						<div class="form-situacao">
-							<label for="statusSelect" class="">Situação do Aluno: </label>
-							<select th:field="*{situacao}" id="statusSelect" class="situacao-input">
-								<option th:each="status : ${T(com.gerenciamento.model.SituacaoEnum).values()}"
-								th:value="${status}" th:text="${status}">
-								</option>
-							</select>
-						</div>
+				<div class="form-situacao">
+					<label for="statusSelect" class="">Situação do Aluno: </label>
+					<select th:field="*{situacao}" id="statusSelect" class="situacao-input">
+						<option th:each="status : ${T(com.gerenciamento.model.SituacaoEnum).values()}"
+						th:value="${status}" th:text="${status}">
+						</option>
+					</select>
+				</div>
 					
-					<!-- Turno -->
-						<div class="form-turno">
-							<label for="turnoSelect" class="">Turno: </label>
-							<select th:field="*{turno}" id="turnoSelect" class="turno-input">
-								<option th:each="tempo : ${T(com.gerenciamento.model.TurnoEnum).values()}"
-								th:value="${tempo}" th:text="${tempo}"></option>
-							</select>
-						</div>
-						<div class="botao-submit-cadastra">
-							<button type="submit" class="botao-cadastra">Cadastrar</button>
-						</div>
+				<!-- Turno -->
+				<div class="form-turno">
+					<label for="turnoSelect" class="">Turno: </label>
+					<select th:field="*{turno}" id="turnoSelect" class="turno-input">
+						<option th:each="tempo : ${T(com.gerenciamento.model.TurnoEnum).values()}"
+						th:value="${tempo}" th:text="${tempo}"></option>
+					</select>
+					</div>
+					<div class="botao-submit-cadastra">
+						<button type="submit" class="botao-cadastra">Cadastrar</button>
+					</div>
 				</div>
 			</form>
 		<div>

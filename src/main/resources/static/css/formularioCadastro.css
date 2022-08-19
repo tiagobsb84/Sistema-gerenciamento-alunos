@@ -157,6 +157,13 @@ body {
     align-items: center;
 }
 
+.botao-salvar-cancelar-cadastra {
+	display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin: 20px
+}
+
 
 /* responsive */
 @media only screen and (max-width: 866px) {
